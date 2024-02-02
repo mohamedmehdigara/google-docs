@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Modal from './modals';
 
+const DocsContainer = styled.div`
+  /* Add your styling for the main container */
+`;
+
+const AddButton = styled.button`
+  /* Add your styling for the add button */
+`;
+
 export default function Docs() {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+
     const handleOpen = () => setOpen(true);
+
     return (
-        <div className='docs-main'>
+        <DocsContainer>
             <h1>Docs Clone</h1>
 
-            <button
-                className='add-docs'
-                onClick={handleOpen}
-            >
+            <AddButton onClick={handleOpen}>
                 Add a Document
-            </button>
+            </AddButton>
 
-            <Modal
-                open={open}
-                setOpen={setOpen}
-            />
-        </div>
-    )
+            <Modal open={open} setOpen={setOpen} />
+        </DocsContainer>
+    );
 }
