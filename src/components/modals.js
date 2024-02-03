@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
+// Styled Components
 const StyledModalContainer = styled.div`
   display: flex;
   align-items: center;
@@ -24,8 +25,13 @@ const StyledModalBox = styled(Box)`
   padding: 16px;
 `;
 
-export default function Modals({ open, setOpen, modalTitle, modalContent }) {
-    const handleClose = () => setOpen(false);
+export default function Modals({ open, setOpen, modalTitle, modalContent, onClose }) {
+    const handleClose = () => {
+        if (onClose) {
+            onClose();
+        }
+        setOpen(false);
+    };
 
     return (
         <StyledModalContainer>
@@ -37,10 +43,10 @@ export default function Modals({ open, setOpen, modalTitle, modalContent }) {
             >
                 <StyledModalBox>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {modalTitle}
+                        {modalTitle || 'Modal Title'}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        {modalContent}
+                        {modalContent || 'Modal Content'}
                     </Typography>
                     <Button onClick={handleClose} variant="contained" color="primary" sx={{ mt: 2 }}>
                         Close
