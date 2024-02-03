@@ -3,6 +3,7 @@ import Docs from './components/docs';
 import DocumentList from './components/DocumentList';
 import Editor from './components/Editor'; // Update the path accordingly
 import Settings from "./components/Settings";
+import Header from './components/Header';
 
 function App() {
   const [selectedDocument, setSelectedDocument] = useState(null);
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div>
+      <Header/>
       <Docs />
       <DocumentList onDocumentClick={handleDocumentClick} />
       {selectedDocument ? (
